@@ -6,7 +6,7 @@
     <!-- User details -->
     <div class="user-profile text-center mt-3">
         <div class="">
-            <img src="assets/admin/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+            <img src="public/assets/admin/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
         </div>
         <div class="mt-3">
             <h4 class="font-size-16 mb-1">Julia Hudda</h4>
@@ -40,7 +40,7 @@
                     <span>Account</span>
                 </a>
                 <ul class="sub-menu" aria-expanded="false">
-                    <li><a href="admin/user/list">List Account</a></li>
+                    <li><a href="admin/list">List Account</a></li>
                     <li><a href="admin/user/add">Add New Account</a></li>
                 </ul>
             </li>

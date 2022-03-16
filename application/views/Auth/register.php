@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    require_once'public/lib/Kendo/Autoload.php';
-    <title>Document</title>
+    <?php
+        require_once'public/lib/Kendo/Autoload.php';
+    ?>    
+    <title>Codeigniter Training</title>
 </head>
 <body>
 

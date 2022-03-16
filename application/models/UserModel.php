@@ -48,4 +48,9 @@ class UserModel extends CI_Model
         }
 
     }
+     public function getAllUser()
+    {
+        $this->load->model('UserModel');
+        return $this->userModel->findAll();
+    }
 }
