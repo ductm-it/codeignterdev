@@ -24,5 +24,5 @@
         // }
     }
 
-    
+    // chỗ nào là controller của m cần
 ?>

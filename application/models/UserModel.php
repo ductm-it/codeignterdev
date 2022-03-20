@@ -53,4 +53,29 @@ class UserModel extends CI_Model
         $this->load->model('UserModel');
         return $this->userModel->findAll();
     }
+
+    function check_user($user){
+		$condition = array('email' => $user['email'], 'password' => $user['password']);
+		$this->db->where($condition);
+		$query = $this->db->get('users');
+		if ($query->num_rows() == 1){
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+    
+    function getInfoByEmail($email){
+		$this->db->where("email",$email);
+		$query = $this->db->get('users');
+
+		if($query->num_rows()!=0){
+			return $query->row();
+		}
+		else{
+			return 0;
+		}
+	}
 }

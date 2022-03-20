@@ -44,7 +44,8 @@
       </div>
         <h1>Success</h1> 
         <p>We received your email confirmation;<br/> Congratulation on your successful confirmation!!</p>
-        <button class="btn btn-success">Click here to send email and get file download</button>
+        <a href="<?php echo base_url('file/download/cc')?>" class="btn btn-success" type="button">Click here to send email and get file download</a>
+
       </div>
     </body>
 </html>

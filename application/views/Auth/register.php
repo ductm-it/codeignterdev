@@ -62,7 +62,7 @@
                                 <small><?php echo form_error('name'); ?></small>
                             </div>
                             <div class="relative">
-                                <label class="font-medium text-gray-900">Sex</label>
+                                <label class="font-medium text-gray-900">Gender</label>
                                 <input type="text" name="sex" class="block w-full px-4 py-4 mt-2 text-xl placeholder-gray-400 bg-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-600 focus:ring-opacity-50" placeholder="Enter Your Sex">
                             </div>
                             <div class="relative">
@@ -84,6 +84,78 @@
         </div>
     </div>
 </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="https://demos.telerik.com/php-ui/form/index">
+    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <title></title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default-main.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+    
+    
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+    
+    
+
+</head>
+<!-- <body>
+    <div id="example">
+    <div class="demo-section k-content">
+        <div id="validation-success"></div>
+
+        <form id="exampleform"></form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var validationSuccess = $("#validation-success");
+
+            $("#exampleform").kendoForm({
+               
+                items: [{
+                    type: "group",
+                    label: "Registration Form",
+                    items: [
+                        { field: "Username", label: "Username:", validation: { required: true } },
+                        { field: "Email", label: "Email:", validation: { required: true, email: true } },
+                        {
+                            field: "Password",
+                            label: "Password:",
+                            validation: { required: true },
+                            editor: function (container, options) {
+                                $('<input type="password" id="Password" name="' + options.field + '" title="Password" required="required" autocomplete="off" aria-labelledby="Password-form-label" data-bind="value: Password" aria-describedby="Password-form-hint"/>')
+                                    .appendTo(container)
+                                    .kendoTextBox();
+                            }
+                        },
+                      
+                        { field: "ConfirmPassword", label: "Confirm Password:" , validation: { required: true, email: true } },
+                       { field: "Name", label: "Name:" },
+                      { field: "Sex", label: "Sex:" },
+                       { field: "Age", label: "Age:" },
+                      { field: "Job", label: "Job:" },
+                      
+                    ]
+                }],
+                validateField: function(e) {
+                    validationSuccess.html("");
+                },
+                submit: function(e) {
+                    e.preventDefault();
+                    validationSuccess.html("<div class='k-messagebox k-messagebox-success'>Form data is valid!</div>");
+                },
+                clear: function(ev) {
+                    validationSuccess.html("");
+                }
+            });
+        });
+    </script>
+</div> -->
+
+</body>
+</html>
 
 </section>
 

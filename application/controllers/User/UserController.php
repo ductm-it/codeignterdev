@@ -37,7 +37,7 @@ class UserController extends CI_Controller
 
             $data = [
                 'email' => $this->input->post('email'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => md5($this->input->post('password')),
                 'name' => $this->input->post('name'),
                 'sex' => $this->input->post('sex'),
                 'age' => $this->input->post('age'),
@@ -55,44 +55,17 @@ class UserController extends CI_Controller
             ];
             $result = $this->UserModel->save($user);
             $user_id = $this->UserModel->getId($user['email']);
+                            $logged_in = [
+                    'email' => $user['email'],
+                    'name' => $user['name'],
+                    // 'verify' => $user_info->verify,
+                ];
+                $this->session->set_userdata('logged_in', $logged_in);
             $this->load->model('MailModel');
             $this->MailModel->send_email($data['email'], $user_id);
             redirect(base_url());
 
-            // if ($result == true) {
-            //     $logged_in = [
-            //         'email' => $user['email'],
-            //         'name' => $user['name'],
-            //     ];
-            //     $this->session->set_userdata('logged_in', $logged_in);
-            //     $user_id = $this->UserModel->getId($user['email']);
-            //     $this->load->model('MailModel');
-            //     $this->MailModel->send_email($email, $user_id);
-            //     redirect(base_url());
-            // } else {
-            //     set_value('error', 'Login fail! Please check your email and password again!');
-            //     $this->load->view('auth/login');
-
-            // }
-
-            // $user_id = $this->UserModel->getId($email);
-            // $id = $user_id['id'];
-
-            // var_dump($user_id);
-            // return;
-            // nó k tìm ra được id ở đây nè
-            // $this->load->model('MailModel');
-            // $this->MailModel->send_email($data['email'], $user_id);
-            // $result = $this->UserModel->save($data);
-            // redirect(base_url());
-
-            // if ($result) {
-            //     $this->session->set_flashdata('status', 'Registered Successfully.! Go to Login');
-            //     redirect(base_url());
-            // } else {
-            //     $this->session->set_flashdata('status', 'Something Went Wrong.!');
-            //     $this->load->view('auth/register');
-            // }
+           
         }
     }
 
@@ -101,7 +74,6 @@ class UserController extends CI_Controller
         $this->load->Model("UserModel");
         $this->UserModel->verify_check($id);
         $this->load->view('auth/verifyview.php');
-        // này là khi nhấn link mà ba, còn ra cái id kèm theo thì bên đăng ký
     }
 
     public function login_view()
@@ -109,34 +81,73 @@ class UserController extends CI_Controller
         $this->load->view("auth/login.php");
     }
 
-    public function loginAuth()
-    {
-        $user_login = array(
+//     public function loginAuth()
+//     {
+        
+//         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+//         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
+//         if ($this->form_validation->run() == false) {
+//             $this->load->view('auth/login');
+//         } else {
+//            $user_login = array(
+//              'email' => $this->input->post('email'),
+//              'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+             
+//         );
 
-             'email' => $this->input->post('email'),
-             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+//         }
+     
+// //$user_login['user_email'],$user_login['user_password']
+//         $data['users'] = $this->UserModel->login_user();
+//          if($data)
+//         {
 
-        );
-//$user_login['user_email'],$user_login['user_password']
-        $data['users'] = $this->UserModel->login_user();
-        //  if($data)
-        //{
+//             $this->session->set_userdata('id', $data['users'][0]['id']);
+//             $this->session->set_userdata('email', $data['users'][0]['email']);
+//             $this->session->set_userdata('name', $data['users'][0]['name']);
+//             $this->load->view('auth/successpage', $data);
 
-        $this->session->set_userdata('id', $data['users'][0]['id']);
-        $this->session->set_userdata('email', $data['users'][0]['email']);
-        $this->session->set_userdata('name', $data['users'][0]['name']);
-        // $this->session->set_userdata('user_age', $data['users'][0]['age']);
-        // $this->session->set_userdata('user_mobile', $data['users'][0]['user_mobile']);
-        echo $this->session->set_userdata('id');
-        $this->load->view('auth/successpage', $data);
+//          }
+//          else{
+//           $this->load->view("auth.login.php");
 
-        //  }
-        //  else{
-        //   $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-        //   $this->load->view("login.php");
+//         }
 
-        // }
+//     }
+//
+    public function loginAuth(){
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
+        if ($this->form_validation->run() == false) {
+           $this->load->view('auth/login');
+        } else {
+            $user = array(
+                'email' => $this->input->post('email'),
+                'password' => md5($this->input->post('password')),
 
+            );
+            $this->load->Model("LoginModel");
+            $result = $this->LoginModel->check_user($user);
+            if ($result) {
+                $this->load->Model("UserModel");
+                $user_info = $this->UserModel->getInfoByEmail($user['email']);
+                $logged_in = [
+                    'email' => $user_info->email,
+                    'name' => $user_info->name,
+                    // 'verify' => $user_info->verify,
+                ];
+                $this->session->set_userdata('logged_in', $logged_in);
+                // $this->session->set_flashdata('notify', 'Login Success!');
+                $this->load->view('auth/successpage');
+            } else {
+                print_r($user['email']);
+
+                // hash password có vẫn đeef gì đó
+                // set_value('error', 'Login fail! Please check your email and password again!');
+                $this->load->view('auth/login');
+                
+            }
+        }
     }
 
     public function logout()

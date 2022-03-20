@@ -66,6 +66,7 @@ $route['file/download/(:any)'] = "filecontroller/send_mail_link_download/$1";
 //admin
 $route['admin/home']='admin/homecontroller/index';
 $route['admin/list']='admin/homecontroller/list';
+$route['admin/log']='admin/homecontroller/log';
 
 
 
