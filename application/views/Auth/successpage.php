@@ -29,8 +29,8 @@
                         </div>
                         <div class="flex flex-col items-center justify-end w-full h-full pt-4 md:w-1/3 md:flex-row md:py-0">
                             <a href="<?php echo base_url('logout'); ?>" class="w-full pl-6 mr-0 text-indigo-200 hover:text-white md:pl-0 md:mr-3 lg:mr-5 md:w-auto">LogOut</a>
-                            <a href="#" class="inline-flex items-center justify-center px-4 py-2 mr-1 text-base font-medium leading-6 text-indigo-600 whitespace-no-wrap transition duration-150 ease-in-out bg-white border border-transparent rounded-full hover:bg-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
-                            <?php echo $this->session->userdata('name'); ?>
+                            <a href="#" value="<?php echo $_SESSION['logged_in']['name'] ?>" class="inline-flex items-center justify-center px-4 py-2 mr-1 text-base font-medium leading-6 text-indigo-600 whitespace-no-wrap transition duration-150 ease-in-out bg-white border border-transparent rounded-full hover:bg-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700">
+                            
 
                         </a>
                         </div>
@@ -51,9 +51,6 @@
             <h1 class="text-4xl font-extrabold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none md:text-6xl xl:text-7xl"><span class="block">Welcome to Codeigniter Training.</span> <span class="relative inline-block mt-3 text-transparent text-white">design websites</span></h1>
             <div class="max-w-lg mx-auto mt-6 text-sm text-center text-indigo-200 md:mt-12 sm:text-base md:max-w-xl md:text-lg xl:text-xl">If you are ready to change the way you design websites, then you'll want to use our block builder to make it fun and easy!</div>
             <div class="relative flex items-center max-w-md mx-auto mt-12 overflow-hidden text-center rounded-full">
-                    <a href="<?php echo base_url('file/download/') ?>" type="button" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
-                           <i class="fa fa-download" aria-hidden="true"></i>  Download
-                    </a>
             </div>
             <div class="mt-8 text-sm text-indigo-300">By signing up, you agree to our terms and services.</div>
         </div>

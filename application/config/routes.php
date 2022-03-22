@@ -61,6 +61,7 @@ $route['email'] = 'MailerController/index';
 $route['user/verify/(:num)'] = 'user/usercontroller/user_verify/$1';
 $route['file/(:any)'] = 'filecontroller/download/$1';
 $route['file/download/(:any)'] = "filecontroller/send_mail_link_download/$1";
+$route['images/mailread/(:any)'] = 'LogController/read_email/$1';
 
 
 //admin

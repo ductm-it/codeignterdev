@@ -24,10 +24,10 @@ class UserController extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[50]');
-        $this->form_validation->set_rules('email', 'Email', 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[50]');
-        $this->form_validation->set_rules('confirmpassword', 'Confirm Password', 'matches[password]');
+        $this->form_validation->set_rules('Name', 'Name', 'required|min_length[5]|max_length[50]');
+        $this->form_validation->set_rules('Email', 'Email', 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]');
+        $this->form_validation->set_rules('Password', 'Password', 'required|min_length[4]|max_length[50]');
+        $this->form_validation->set_rules('ConfirmPassword', 'Confirm Password', 'matches[Password]');
 
         if ($this->form_validation->run() == false) {
             // failed
@@ -116,14 +116,14 @@ class UserController extends CI_Controller
 //     }
 //
     public function loginAuth(){
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
+        $this->form_validation->set_rules('Email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('Password', 'Password', 'trim|required|min_length[4]');
         if ($this->form_validation->run() == false) {
            $this->load->view('auth/login');
         } else {
             $user = array(
-                'email' => $this->input->post('email'),
-                'password' => md5($this->input->post('password')),
+                'email' => $this->input->post('Email'),
+                'password' => md5($this->input->post('Password')),
 
             );
             $this->load->Model("LoginModel");
@@ -133,17 +133,12 @@ class UserController extends CI_Controller
                 $user_info = $this->UserModel->getInfoByEmail($user['email']);
                 $logged_in = [
                     'email' => $user_info->email,
-                    'name' => $user_info->name,
-                    // 'verify' => $user_info->verify,
+                    'name' => $user_info->name
                 ];
                 $this->session->set_userdata('logged_in', $logged_in);
-                // $this->session->set_flashdata('notify', 'Login Success!');
                 $this->load->view('auth/successpage');
             } else {
-                print_r($user['email']);
-
-                // hash password có vẫn đeef gì đó
-                // set_value('error', 'Login fail! Please check your email and password again!');
+                
                 $this->load->view('auth/login');
                 
             }

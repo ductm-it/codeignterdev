@@ -487,7 +487,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <?php foreach ($result as $log): ?>
+                                                        <tr data-id="1">
+                                                            <td data-field="id" style="width: 80px"><?=$log['id']?></td>
+                                                            <td data-field="email"><?=$log['email']?></td>
+                                                            <td data-field="sending_at"><?=$log['sending_at']?></td>
+                                                            <td data-field="reading_at"><?=$log['reading_at']?></td>
+                                                            <td data-field="download_at"><?=$log['download_at']?></td>
+                                                        </tr>
+                                                    <?php endforeach?>
                                                  
                                                 </tbody>
                                             </table>
