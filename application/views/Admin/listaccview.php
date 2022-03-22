@@ -8,7 +8,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
-                        <base href="<?= base_url() ?>">
+        <base href="<?= base_url() ?>">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default-main.min.css" />
+
+        <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+        
+        
+        <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+        
+        <?php
+            require_once'public/lib/Kendo/Autoload.php';
+        ?> 
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="public/public/assets/admin/admin/images/favicon.ico">
@@ -450,8 +463,7 @@
                 <div class="page-content">
                     <div class="container-fluid">
 
-                        <!-- start page title -->
-                        <div class="row">
+                    <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Editable Table</h4>
@@ -466,46 +478,70 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end page title -->
-                        
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-        
-                                        <h4 class="card-title">Datatable Editable</h4>
-        
-                                        <div class="table-responsive">
-                                            <table class="table table-editable table-nowrap align-middle table-edits">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Sex</th>
-                                                        <th>Age</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
 
-                                                 <?php foreach ($result as $user): ?>
-                                                    <tr data-id="1">
-                                                        <td data-field="id" style="width: 80px"><?=$user['id']?></td>
-                                                        <td data-field="name"><?=$user['name']?></td>
-                                                        <td data-field="email"><?=$user['email']?></td>
-                                                        <td data-field="sex"><?=$user['sex']?></td>
-                                                        <td data-field="age"><?=$user['age']?></td>
-                                                    </tr>
-                                                    <?php endforeach?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                     <section class="w-full px-6 pb-12 antialiased bg-white pt-12">
+                                <div class="flex flex-col">
+                                    <table id="grid">
+                                        <colgroup>
+                                            <col style="width:300px"/>
+                                            <col style="width:300px" />
+                                            <col style="width:300px" />
+                                            <col style="width:300px" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    Email
+                                                </th>
+                                                <th scope="col">
+                                                    Name
+                                                </th>
+                                                <th scope="col">
+                                                    Sex
+                                                </th>
+                                                <th scope="col">
+                                                    Age
+                                                </th>
+                                                <th scope="col">
+                                                    Job
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($result as $log) { ?>
+                                                <tr>
+                                                    <td><?php echo $log['email']; ?></td>
+                                                    <td><?php echo $log['name']; ?></td>
+                                                    <td><?php echo $log['sex']; ?></td>
+                                                    <td><?php echo $log['age']; ?></td>
+                                                    <td><?php echo $log['job']; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div> <!-- container-fluid -->
-                </div>
+
+                            </section>
+
+                            <script>
+                                $(document).ready(function() {
+                                    $("#grid").kendoGrid({
+                                        height: 550,
+                                        sortable: true,
+                                        columnMenu: {
+                                            filterable: true
+                                        },
+                                        pageable: true,
+                                        sortable: true,
+                                        navigatable: true,
+                                        resizable: true,
+                                        reorderable: true,
+                                        groupable: true,
+                                        filterable: true,
+                                    });
+                                });
+                            </script>
+
                 <!-- End Page-content -->
                 
                 <footer class="footer">

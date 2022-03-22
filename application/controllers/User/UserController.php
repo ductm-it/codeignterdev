@@ -36,12 +36,12 @@ class UserController extends CI_Controller
         } else {
 
             $data = [
-                'email' => $this->input->post('email'),
-                'password' => md5($this->input->post('password')),
-                'name' => $this->input->post('name'),
-                'sex' => $this->input->post('sex'),
-                'age' => $this->input->post('age'),
-                'job' => $this->input->post('job'),
+                'email' => $this->input->post('Email'),
+                'password' => md5($this->input->post('Password')),
+                'name' => $this->input->post('Name'),
+                'sex' => $this->input->post('Sex'),
+                'age' => $this->input->post('Age'),
+                'job' => $this->input->post('Job'),
 
             ];
             $this->load->model('UserModel');

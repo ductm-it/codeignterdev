@@ -8,7 +8,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
-                        <base href="<?= base_url() ?>">
+        <base href="<?= base_url() ?>">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default-main.min.css" />
+
+        <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
+        
+        
+        <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+        <script type='text/javascript' src="public/js/jquery.min.js"></script>
+
+        <?php
+            require_once'public/lib/Kendo/Autoload.php';
+        ?> 
 
         <!-- App favicon -->
         <link rel="shortcut icon" href="public/public/assets/admin/admin/images/favicon.ico">
@@ -467,8 +481,67 @@
                             </div>
                         </div>
                         <!-- end page title -->
+                            <section class="w-full px-6 pb-12 antialiased bg-white pt-12">
+                                <div class="flex flex-col">
+                                    <table id="grid">
+                                        <colgroup>
+                                            <col style="width:300px"/>
+                                            <col style="width:300px" />
+                                            <col style="width:300px" />
+                                            <col style="width:300px" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    Email
+                                                </th>
+                                                <th scope="col">
+                                                    Sending At
+                                                </th>
+                                                <th scope="col">
+                                                    Reading At
+                                                </th>
+                                                <th scope="col">
+                                                    Downloading At
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($result as $log) { ?>
+                                                <tr>
+                                                    <td><?php echo $log['email']; ?></td>
+                                                    <td><?php echo $log['sending_at']; ?></td>
+                                                    <td><?php if ($log['reading_at']) echo $log['reading_at'];
+                                                        else echo "____" ?></td>
+                                                    <td><?php  echo $log['download_at']; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </section>
+
+                            <script>
+                                $(document).ready(function() {
+                                    $("#grid").kendoGrid({
+                                        height: 550,
+                                        sortable: true,
+                                        columnMenu: {
+                                            filterable: true
+                                        },
+                                        pageable: true,
+                                        sortable: true,
+                                        navigatable: true,
+                                        resizable: true,
+                                        reorderable: true,
+                                        groupable: true,
+                                        filterable: true,
+                                    });
+                                });
+                            </script>
                         
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -502,8 +575,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
+                            </div> <!end col -->
+                        </div>
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
