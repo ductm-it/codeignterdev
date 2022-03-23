@@ -70,6 +70,8 @@ $route['admin/log']='admin/homecontroller/log';
 
 
 //traversy
+$route['posts/create'] = 'traversy/posts/create';
+$route['posts/update'] = 'traversy/posts/update';
 $route['posts/(:any)'] = 'traversy/posts/view/$1';
 $route['posts'] = 'traversy/posts/index';
 $route['(:any)'] = 'traversy/pages/view/$1';
