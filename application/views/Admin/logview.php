@@ -488,7 +488,16 @@
                                                 </thead>
                                                 <tbody>
 
-                                                 
+
+                                                 <?php foreach ($result as $log): ?>
+                                                    <tr data-id="1">
+                                                        <td data-field="id" style="width: 80px"><?=$log['id']?></td>
+                                                        <td data-field="name"><?=$log['email']?></td>
+                                                        <td data-field="email"><?=$log['sending_at']?></td>
+                                                        <td data-field="sex"><?=$log['reading_at']?></td>
+                                                        <td data-field="age"><?=$log['download_at']?></td>
+                                                    </tr>
+                                                    <?php endforeach?>                                                 
                                                 </tbody>
                                             </table>
                                         </div>

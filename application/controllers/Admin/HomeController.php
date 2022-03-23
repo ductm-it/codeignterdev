@@ -19,7 +19,7 @@ class HomeController extends CI_Controller {
     }
 
      public function log(){
-        $query = $this->db->query("SELECT * FROM `users`");
+        $query = $this->db->query("SELECT * FROM `logs`");
         $data['result'] = $query->result_array();
         
         $this->load->view('admin/logview', $data);
