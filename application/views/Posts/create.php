@@ -11,10 +11,11 @@
   </div>
   <div class="form-group">
     <label>Category</label>
-    <select name="category_id" class="form-control" id="category"></select>
+    <select name="category_id" class="form-control" id="category">
       <?php foreach($categories as $category)?>
-        <option value=<?php echo $category['name']?>><?php echo $category['name']?></option>
+        <option value="<?php echo $category['id']?>"><?php echo $category['name']?></option>
       <?php 'endforeach'; ?>
+    </select>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
