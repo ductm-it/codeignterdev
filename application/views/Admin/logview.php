@@ -526,17 +526,7 @@
                                 $(document).ready(function() {
                                     $("#grid").kendoGrid({
                                         height: 550,
-                                        sortable: true,
-                                        columnMenu: {
-                                            filterable: true
-                                        },
-                                        pageable: true,
-                                        sortable: true,
-                                        navigatable: true,
-                                        resizable: true,
-                                        reorderable: true,
-                                        groupable: true,
-                                        filterable: true,
+                                        sortable: true
                                     });
                                 });
                             </script>

@@ -11,6 +11,8 @@
     
     
     <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
+    <script type='text/javascript' src="<?php echo base_url(); ?>public/js/jquery.min.js"></script>
+	<script type='text/javascript' src="<?php echo base_url(); ?>public/js/kendo.all.min.js"></script>
     <?php
         require_once'public/lib/Kendo/Autoload.php';
     ?>    

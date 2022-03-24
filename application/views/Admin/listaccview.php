@@ -8,17 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
+        
         <base href="<?= base_url() ?>">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://kendo.cdn.telerik.com/2019.2.619/js/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.default-main.min.css" />
+         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2022.1.301/styles/kendo.blueopal.min.css" />
 
         <script src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js"></script>
-        
-        
-        <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"></script>
-        
+  
+        <script type='text/javascript' src="<?php echo base_url(); ?>public/js/jquery.min.js"></script>
+        <script type='text/javascript' src="<?php echo base_url(); ?>public/js/kendo.all.min.js"></script>
+
         <?php
             require_once'public/lib/Kendo/Autoload.php';
         ?> 
@@ -508,7 +508,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($result as $log) { ?>
+                                            <?php foreach ($result as $log)  ?>
                                                 <tr>
                                                     <td><?php echo $log['email']; ?></td>
                                                     <td><?php echo $log['name']; ?></td>
@@ -516,31 +516,22 @@
                                                     <td><?php echo $log['age']; ?></td>
                                                     <td><?php echo $log['job']; ?></td>
                                                 </tr>
-                                            <?php } ?>
+                                            <?php 'endforeach'; ?>
                                         </tbody>
                                     </table>
                                 </div>
 
                             </section>
 
-                            <script>
-                                $(document).ready(function() {
+                             <script>
+                                 $(function() {
                                     $("#grid").kendoGrid({
                                         height: 550,
-                                        sortable: true,
-                                        columnMenu: {
-                                            filterable: true
-                                        },
-                                        pageable: true,
-                                        sortable: true,
-                                        navigatable: true,
-                                        resizable: true,
-                                        reorderable: true,
-                                        groupable: true,
-                                        filterable: true,
+                                        sortable: true
                                     });
                                 });
                             </script>
+                           
 
                 <!-- End Page-content -->
                 

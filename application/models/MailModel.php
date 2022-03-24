@@ -60,7 +60,7 @@ class MailModel extends CI_Model
         $mail->addAddress($emailAddress);
 
         // Email subject
-        $mail->Subject = 'New Account - Verify';
+        $mail->Subject = 'Comfirmed - Get Document';
 
         // Set email format to HTML
         $mail->isHTML(true);
